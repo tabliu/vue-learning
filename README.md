@@ -105,7 +105,9 @@ Vue学习笔记和代码记录
 	  v-on:leave="leave"
 	  v-on:after-leave="afterLeave"
 	  v-on:leave-cancelled="leaveCancelled">
+
 	...
+
 	</transition>
 `
 ### 自定义指令
