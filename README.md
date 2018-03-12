@@ -117,7 +117,7 @@ Vue学习笔记和代码记录
 ### 插件
 
   * vue-resource： 发送http请求
-  * vue-rooter：   前端路由
+  * vue-router：   前端路由
   * 引入步骤：
     + 入口js文件 import  from  插件 
     + Vue.use(插件)  不过在模块环境中应当始终显式调用 Vue.use() :
