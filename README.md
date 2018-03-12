@@ -1,7 +1,7 @@
 # Vue-learning
 Vue学习笔记和代码记录
 
-## 安装：
+## 安装
 
   * 直接引入链接：建议初学者使用；
   * 通过node.js的NPM安装Vue-cli脚手架；
@@ -9,7 +9,7 @@ Vue学习笔记和代码记录
 
 ### 标签属性
 
-  *  v-bind：标签属性绑定，属于动态绑定，可以简写为：。绑定后的属性为变量，可以是字符串，数组或者是对象
+  *  v-bind：标签属性绑定，属于动态绑定，可以简写为：。绑定后的属性为变量，可以是字符串，数组或者是对象；
   * v-if/v-if-else-if/v-else：条件渲染，如果成立则执行，不成立则注销；
   * v-show：同样是条件渲染，不同的是不成立是隐藏而不是注销；
 
@@ -18,14 +18,14 @@ Vue学习笔记和代码记录
 
   * 通过v-on:event="eventName"进行绑定，可简写为@:event="eventName";方法通过在methods里进行赋值；
   * 在v-on:event.midiflyer添加修改器；
-  * 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。methods: {my-function () {this.$emit('diyEvent'), 参数}}
+  * 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。`methods: {my-function () {this.$emit('diyEvent'), 参数}}`
 
 
 ### 表单数据绑定
 
   * v-model：数据双向绑定；v-model.lazy：延迟对数据进行更新；
-  * v-model.number：对输入的数据字符串转为数字；
-  * v-model.trim：对数据进行裁剪，去除空格等
+  	+ v-model.number：对输入的数据字符串转为数字；
+  	+ v-model.trim：对数据进行裁剪，去除空格等
   * checkbox：储存的数据类型是数组；
   * radio：储存的数据类型是字符串；
   * select：存储的数据类型是字符串；
@@ -34,20 +34,21 @@ Vue学习笔记和代码记录
 ### 计算属性和数据监听
 
   * 计算属性：computed: {方法 () { return 方法 }}；计算属性的优点：可以直接根据data的属性动态的更改（data中myValue的值变化会同步反映到计算属性里）（计算属性会缓存所依赖的那个值，直到那个值发生变化，否则不会重新取值）与方法调用的缺点：调用方法的时候才会更新，即使data中myValue的值没有变化，调用时依然会去重新取值。
-  * 数据监听：watch: { 方法 () {}}
+  * 数据监听：watch: { 方法 () {}}；
 
 
 ## 组件
+
 ### 命名
 
   * 不强制要求按照W3C规则进行命名，但最好遵循。例如：`my-template`;
-  * 不管组件是大驼峰还是小驼峰，在模版引用的时候一律要转为中横线的命名方式。例如：组件为comAbout，引用时为：<com-about></com-about>；在传递属性时名称也同样。
+  * 不管组件是大驼峰还是小驼峰，在模版引用的时候一律要转为中横线的命名方式。例如：组件为`comName`，引用时为：`<com-name></com-name>`；在传递属性时名称也同样。
 
 
 ### 注册
 
-  * 全局注册：Vue.component('my-template', {template: '...'});  <my-template></my-template>
-  * 局部注册：只在使用的场景进行注册。var myTemplate = {template: '...'};  new Vue({..., components: {'my-template: myTemplate'}})
+  * 全局注册：`Vue.component('my-template', {template: '...'});`  html：`<my-template></my-template>`
+  * 局部注册：只在使用的场景进行注册。`var myTemplate = {template: '...'};  new Vue({..., components: {'my-template: myTemplate'}})`
 
 
 ### 模版解析
@@ -168,3 +169,4 @@ Vue学习笔记和代码记录
 
 
 ## 参考资料
+* [Vue官网](https://cn.vuejs.org/v2/guide/)
