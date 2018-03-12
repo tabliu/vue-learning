@@ -81,7 +81,9 @@ Vue学习笔记和代码记录
 
 
 ## 高级用法
+
 ### 动画：使用transition 内置组件，有css过渡和js过渡两种方式。
+
 #### css过渡实现原理：给动画的不同阶段加上不同的class名称。
 
   * 四个阶段：v-enter/v-enter-active/v-leave/v-leave-active；使用：`<transition name="fade"></transition>`  .fade-enter/.fade-enter-active/.fade-leave/.fade-leave-active；
@@ -91,8 +93,9 @@ Vue学习笔记和代码记录
 
 #### js过渡实现原理：通过定义不同的方法来实现动画。
 
-  * 不同方法名：
+不同方法名：
 
+`
 	<transition
 	  v-on:before-enter="beforeEnter"
 	  v-on:enter="enter"
@@ -104,7 +107,7 @@ Vue学习笔记和代码记录
 	  v-on:leave-cancelled="leaveCancelled">
 	...
 	</transition>
-
+`
 ### 自定义指令
 
   * 方法：主要有两种：局部定义和全局定义。
