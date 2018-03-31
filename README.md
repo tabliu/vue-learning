@@ -3,38 +3,58 @@ Vue学习笔记和代码记录
 
 ## 安装
 
-  * 直接引入链接：建议初学者使用；
-  * 通过node.js的NPM安装Vue-cli脚手架；
+* 直接引入链接：建议初学者使用；
+* 通过node.js的NPM安装Vue；
+* 通过node.js的NPM安装Vue-cli脚手架（推荐安装方式）；
 
 
-### 标签属性
+## 基础
 
-  *  v-bind：标签属性绑定，属于动态绑定，可以简写为：。绑定后的属性为变量，可以是字符串，数组或者是对象；
-  * v-if/v-if-else-if/v-else：条件渲染，如果成立则执行，不成立则注销；
-  * v-show：同样是条件渲染，不同的是不成立是隐藏而不是注销；
+### 数据类型
+
+* 字符串：title: 'hello world'；
+* 数字：num:123；
+* 数组：arrow: ['apple', 'banana','orange']；
+* 对象：name: {firstName:'ming',lastName:'Li'}；
+* 布尔值：true/false；
 
 
-### 事件绑定
+### 模版数据绑定
 
-  * 通过v-on:event="eventName"进行绑定，可简写为@:event="eventName";方法通过在methods里进行赋值；
-  * 在v-on:event.midiflyer添加修改器；
-  * 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。`methods: {my-function () {this.$emit('diyEvent'), 参数}}`
+* {{ xxx }}：模版解析；
+* v-text：文本绑定；
+* v-model：数据双向绑定；v-model.lazy：延迟对数据进行更新；
+  - v-model.number：对输入的数据字符串转为数字；
+  - v-model.trim：对数据进行裁剪，去除空格等
 
 
 ### 表单数据绑定
 
-  * v-model：数据双向绑定；v-model.lazy：延迟对数据进行更新；
-  	+ v-model.number：对输入的数据字符串转为数字；
-  	+ v-model.trim：对数据进行裁剪，去除空格等
-  * checkbox：储存的数据类型是数组；
-  * radio：储存的数据类型是字符串；
-  * select：存储的数据类型是字符串；
+- checkbox：储存的数据类型是数组；
+- radio：储存的数据类型是字符串；
+- select：存储的数据类型是字符串；
 
 
+### 标签属性
+
+*  v-bind：标签属性绑定，属于动态绑定，可以简写为：。绑定后的属性为变量，可以是字符串，数组或者是对象；
+* v-if/v-if-else-if/v-else：条件渲染，如果成立则执行，不成立则注销；
+* v-show：同样是条件渲染，不同的是不成立是隐藏而不是注销；
+
+
+### 事件绑定
+
+* 通过v-on:event="eventName"进行绑定，可简写为@:event="eventName";方法通过在methods里进行方法定义；
+* 在v-on:event.midiflyer添加修改器；
+* 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。`methods: {my-function () {this.$emit('diyEvent'), 参数}}`
+
+	
 ### 计算属性和数据监听
-
-  * 计算属性：computed: {方法 () { return 方法 }}；计算属性的优点：可以直接根据data的属性动态的更改（data中myValue的值变化会同步反映到计算属性里）（计算属性会缓存所依赖的那个值，直到那个值发生变化，否则不会重新取值）与方法调用的缺点：调用方法的时候才会更新，即使data中myValue的值没有变化，调用时依然会去重新取值。
-  * 数据监听：watch: { 方法 () {}}；
+* 传值属性：props: ['xx','xx']。父子组件如果需要传值，必须要在props里进行定义；
+* 事件属性：methods: {}。所有事件都在这里进行定义；很多情况下在执行事件时需要取消默认事件。function(e){e.preventDefault();}；
+* 计算属性：computed: {方法 () { return 方法 }}；计算属性的优点：可以直接根据data的属性动态的更改（data中myValue的值变化会同步反映到计算属性里）（计算属性会缓存所依赖的那个值，直到那个值发生变化，否则不会重新取值）与方法调用的缺点：调用方法的时候才会更新，即使data中myValue的值没有变化，调用时依然会去重新取值。
+* 创建属性：created:function(){}。方法不需要手动调用，直接执行。
+* 数据监听：watch: { 方法 () {}}；
 
 
 ## 组件
@@ -167,8 +187,17 @@ Vue学习笔记和代码记录
 
 ## 踩坑
 
-  * 手写输入的拼写错误问题，一般会提示出来
-  * 使用webpack要进行loader依赖的安装
+  * 在开发过程中，如果修改了配置文件，需要重新启动，否则报错；
+  * 手写输入的拼写错误问题，一般会提示出来；
+  * 样式文件中的拼写错误，包括属性、值、图片名称，如果找不到也会报错，一般很难找到，所以出现报错的时候一定先要解决！！
+  * 使用webpack要进行loader依赖的安装；
+  * proxyTable 反向代理设置；
+  * 在组件中template节点下必须只有一个子节点；
+  * 如果采用webpack进行打包管理，如果数据中有需要在js里引用图片地址，需要使用`require()`的方式进行引用，否则不会被打包到静态文件目录里；
+  * 在组件使用时候先进行数据绑定；
+  * 在使用属性的时候一定记得要添加作用域，比如this；
+  * 在组件或者模版中使用sass或less文件，一定要在style标签上声明lang，否则报错没商量；
+  * 在组件开发过程中，如果需要传参一定记得定义并且在引用的地方调用；
 
 
 ## 参考资料
