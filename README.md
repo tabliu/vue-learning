@@ -46,16 +46,22 @@ Vue学习笔记和代码记录
 
 * 通过v-on:event="eventName"进行绑定，可简写为@:event="eventName";方法通过在methods里进行方法定义；
 * 在v-on:event.midiflyer添加修改器；
-* 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。`methods: {my-function () {this.$emit('diyEvent'), 参数}}`
+* 自定义事件：v-on:diyEvent="eventName"，通过$emit来触发自定义事件。`methods: {my-function () {this.$emit('diyEvent'), 参数}}`；
 
-	
+
 ### 计算属性和数据监听
 * 传值属性：props: ['xx','xx']。父子组件如果需要传值，必须要在props里进行定义；
 * 事件属性：methods: {}。所有事件都在这里进行定义；很多情况下在执行事件时需要取消默认事件。function(e){e.preventDefault();}；
-* 计算属性：computed: {方法 () { return 方法 }}；计算属性的优点：可以直接根据data的属性动态的更改（data中myValue的值变化会同步反映到计算属性里）（计算属性会缓存所依赖的那个值，直到那个值发生变化，否则不会重新取值）与方法调用的缺点：调用方法的时候才会更新，即使data中myValue的值没有变化，调用时依然会去重新取值。
+* 计算属性：computed: {方法 () { return 方法 }}；计算属性的优点：可以直接根据data的属性动态的更改（data中myValue的值变化会同步反映到计算属性里）（计算属性会缓存所依赖的那个值，直到那个值发生变化，否则不会重新取值）与方法调用的缺点：调用方法的时候才会更新，即使data中myValue的值没有变化，调用时依然会去重新取值。使用场景：在耗时、大量搜索的情况下使用，减少dom重复渲染的性能支出。
 * 创建属性：created:function(){}。方法不需要手动调用，直接执行。
 * 数据监听：watch: { 方法 () {}}；
 
+
+### 应用
+#### 动态绑定class
+* v-bind:class="{red:true}"；
+* v-bind:class={changeClass:changeClass}；
+* v-bind:class={active ? true : false}
 
 ## 组件
 
